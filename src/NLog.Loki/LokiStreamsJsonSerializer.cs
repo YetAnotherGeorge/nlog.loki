@@ -47,10 +47,7 @@ namespace NLog.Loki
                                 {
                                     using(await j.WriteArrayAsync())
                                     {
-                                        var timestamp =
-                                            ToUnixTimeNs(@event.Timestamp).
-                                                ToString("g", CultureInfo.InvariantCulture);
-
+                                        string timestamp = ToUnixTimeNs(@event.Timestamp).ToString("g", CultureInfo.InvariantCulture);
                                         await j.WriteValueAsync(timestamp);
                                         await j.WriteValueAsync(@event.Line);
                                     }
